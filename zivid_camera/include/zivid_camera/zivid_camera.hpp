@@ -74,7 +74,7 @@ public:
   ~ZividCamera() override;
   ZIVID_CAMERA_ROS_PUBLIC Zivid::Application & zividApplication();
 
-private:
+protected:
   void onCameraConnectionKeepAliveTimeout();
   void reconnectToCameraIfNecessary();
   void setCameraStatus(CameraStatus camera_status);
