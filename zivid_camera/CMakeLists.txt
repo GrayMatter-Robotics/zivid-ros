@@ -67,7 +67,7 @@ install(TARGETS ${ZIVID_DRIVER_COMPONENT_NAME}
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib)
 
-install(DIRECTORY include DESTINATION include)
+install(DIRECTORY include/ DESTINATION include)
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 
@@ -91,4 +91,19 @@ if(BUILD_TESTING)
 
 endif()
 
+ament_export_include_directories(include)
+ament_export_libraries(${ZIVID_DRIVER_COMPONENT_NAME})
+ament_export_dependencies(
+  image_transport
+  Zivid
+  zivid_interfaces
+)
 ament_package()
+
+SET(CPACK_GENERATOR "DEB")
+set(CPACK_PACKAGE_NAME "zivid-camera-ros2")
+SET(CPACK_PACKAGE_VERSION_MAJOR "2")
+SET(CPACK_PACKAGE_VERSION_MINOR "13")
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "GrayMatter Robotics") #required
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "zivid, zivid-genicam, zivid-studio, zivid-tools, zivid-interfaces-ros2")
+INCLUDE(CPack)
