@@ -957,6 +957,27 @@ void ZividCamera::logErrorAndThrowRuntimeException(const std::string & message)
   logErrorToLoggerAndThrowRuntimeException(get_logger(), message);
 }
 
+// customized hack functions
+void ZividCamera::setZividSettings(const Zivid::Settings& settings)
+{
+  settings_controller_->setSettings(settings);
+}
+
+Zivid::Settings ZividCamera::getZividSettings()
+{
+  return settings_controller_->currentSettings();
+}
+
+void ZividCamera::setZividSettings2D(const Zivid::Settings2D& settings_2d)
+{
+  settings_2d_controller_->setSettings(settings_2d);
+}
+
+Zivid::Settings2D ZividCamera::getZividSettings2D()
+{
+  return settings_2d_controller_->currentSettings();
+}
+
 }  // namespace zivid_camera
 
 #include "rclcpp_components/register_node_macro.hpp"

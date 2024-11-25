@@ -74,6 +74,12 @@ public:
   ~ZividCamera() override;
   ZIVID_CAMERA_ROS_PUBLIC Zivid::Application & zividApplication();
 
+  // customized hack functions
+  void setZividSettings(const Zivid::Settings& settings);
+  Zivid::Settings getZividSettings();
+  void setZividSettings2D(const Zivid::Settings2D& settings_2d);
+  Zivid::Settings2D getZividSettings2D();
+
 protected:
   void onCameraConnectionKeepAliveTimeout();
   void reconnectToCameraIfNecessary();
